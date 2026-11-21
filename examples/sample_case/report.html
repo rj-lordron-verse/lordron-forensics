@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LORDRON Forensics Report - Case CASE-LIVE-001</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --accent-cyan: #06b6d4;
+            --accent-blue: #3b82f6;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding: 30px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .brand-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--accent-cyan);
+        }
+        .tagline {
+            color: #fbbf24;
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-top: 4px;
+        }
+        .meta-pill {
+            background-color: rgba(6, 182, 212, 0.1);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            text-align: right;
+        }
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 25px;
+        }
+        .card h2 {
+            font-size: 1.25rem;
+            color: var(--accent-cyan);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .badge {
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+        .badge-source {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border: 1px solid #3b82f6;
+            font-family: monospace;
+            font-size: 0.75rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            background-color: rgba(15, 23, 42, 0.6);
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+        .stat-box {
+            background-color: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border-color);
+            padding: 14px;
+            border-radius: 8px;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+        .stat-val {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 4px;
+        }
+        .note-card {
+            background-color: rgba(15, 23, 42, 0.5);
+            border-left: 4px solid var(--accent-cyan);
+            padding: 14px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+        }
+        .disclaimer-box {
+            background-color: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 0.85rem;
+            color: #fca5a5;
+            margin-top: 20px;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <div class="brand-title">LORDRON FORENSICS</div>
+                <div class="tagline">"Every File Has a Story. Find It."</div>
+                <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 6px;">
+                    Digital Investigation Toolkit • Version 1.0.0
+                </div>
+            </div>
+            <div class="meta-pill">
+                <div><strong>Case ID:</strong> CASE-LIVE-001</div>
+                <div><strong>Investigator:</strong> Raj</div>
+                <div><strong>Generated:</strong> 2026-11-21T17:05:00.715761+00:00</div>
+            </div>
+        </header>
+
+        <section class="card">
+            <h2>
+                <span>Case Overview</span>
+                <span class="badge" style="background-color: #10b98122; color: #10b981; border: 1px solid #10b981;">
+                    INTEGRITY VERIFIED
+                </span>
+            </h2>
+            <div class="grid-2">
+                <div class="stat-box">
+                    <div class="stat-label">Title</div>
+                    <div class="stat-val">Gateway Intrusion</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Investigation Status</div>
+                    <div class="stat-val">OPEN</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Total Evidence Items</div>
+                    <div class="stat-val">2</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Case Inception (UTC)</div>
+                    <div class="stat-val" style="font-size: 0.95rem; font-family: monospace;">2026-11-21T17:04:46.163365+00:00</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Evidence Inventory & Integrity Ledger</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Evidence ID</th>
+                            <th>Artifact Name</th>
+                            <th>Format</th>
+                            <th>Size</th>
+                            <th>Acquisition SHA256</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <td style="font-weight: 600; font-family: monospace;">EV-FC432750</td>
+            <td><strong>payload_disguised.jpg</strong></td>
+            <td>ELF Executable/Object</td>
+            <td>136 bytes</td>
+            <td><code style="word-break: break-all; font-size: 0.85em;">0720f3d332e24b918ec5e3eadb041ca887249ca8c0864230b3e6c456199eb72e</code></td>
+            <td><span style="color: #10b981; font-weight: 600;">INTEGRITY_VERIFIED</span></td>
+        </tr>
+        
+        <tr>
+            <td style="font-weight: 600; font-family: monospace;">EV-7A102AE3</td>
+            <td><strong>document.pdf</strong></td>
+            <td>PDF Document</td>
+            <td>511 bytes</td>
+            <td><code style="word-break: break-all; font-size: 0.85em;">bc9c0b5ca6233ca113f33fa16d014f5377cb6a1c1baafb8d2dad0d939d08a7ce</code></td>
+            <td><span style="color: #10b981; font-weight: 600;">INTEGRITY_VERIFIED</span></td>
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Multi-Source Chronological Timeline</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Timestamp (UTC)</th>
+                            <th>Source Classification</th>
+                            <th>Event Summary</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:00:27.280519+00:00</td>
+            <td><span class="badge badge-source">FILESYSTEM_MTIME</span></td>
+            <td>Filesystem Last Modified time for &#x27;document.pdf&#x27;<div style="color: #ef4444; font-size: 0.8em; margin-top: 4px;">⚠ CAUTION: Filesystem timestamps are easily altered/timestomped and not proof of event time.</div></td>
+        </tr>
+        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:00:33.440519+00:00</td>
+            <td><span class="badge badge-source">FILESYSTEM_MTIME</span></td>
+            <td>Filesystem Last Modified time for &#x27;payload_disguised.jpg&#x27;<div style="color: #ef4444; font-size: 0.8em; margin-top: 4px;">⚠ CAUTION: Filesystem timestamps are easily altered/timestomped and not proof of event time.</div></td>
+        </tr>
+        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:04:46.163365+00:00</td>
+            <td><span class="badge badge-source">CASE_CREATION</span></td>
+            <td>Case &#x27;Gateway Intrusion&#x27; created by Raj</td>
+        </tr>
+        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:04:47.332519+00:00</td>
+            <td><span class="badge badge-source">FILESYSTEM_CTIME</span></td>
+            <td>Filesystem Metadata Changed / Created time for &#x27;payload_disguised.jpg&#x27;<div style="color: #ef4444; font-size: 0.8em; margin-top: 4px;">⚠ CAUTION: Filesystem timestamps are easily altered/timestomped and susceptible to clock skew.</div></td>
+        </tr>
+        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:04:47.338121+00:00</td>
+            <td><span class="badge badge-source">EVIDENCE_ACQUISITION_UTC</span></td>
+            <td>Evidence acquired: &#x27;payload_disguised.jpg&#x27; (SHA256: 0720f3d332e24b91...)</td>
+        </tr>
+        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:04:47.932519+00:00</td>
+            <td><span class="badge badge-source">FILESYSTEM_CTIME</span></td>
+            <td>Filesystem Metadata Changed / Created time for &#x27;document.pdf&#x27;<div style="color: #ef4444; font-size: 0.8em; margin-top: 4px;">⚠ CAUTION: Filesystem timestamps are easily altered/timestomped and susceptible to clock skew.</div></td>
+        </tr>
+        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:04:47.937414+00:00</td>
+            <td><span class="badge badge-source">EVIDENCE_ACQUISITION_UTC</span></td>
+            <td>Evidence acquired: &#x27;document.pdf&#x27; (SHA256: bc9c0b5ca6233ca1...)</td>
+        </tr>
+        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:04:48.531203+00:00</td>
+            <td><span class="badge badge-source">AUDIT_RECORD</span></td>
+            <td>[Raj] NOTE_ADDED: Investigator note recorded (id: 1)</td>
+        </tr>
+        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:04:48.531203+00:00</td>
+            <td><span class="badge badge-source">INVESTIGATOR_NOTE</span></td>
+            <td>Investigator Note (Raj): Triage confirmed ELF header inside JPG file.</td>
+        </tr>
+        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:04:49.842692+00:00</td>
+            <td><span class="badge badge-source">AUDIT_RECORD</span></td>
+            <td>[Investigator] INTEGRITY_VERIFIED: Evidence EV-FC432750 SHA256 matches acquisition digest.</td>
+        </tr>
+        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:04:49.842692+00:00</td>
+            <td><span class="badge badge-source">AUDIT_RECORD</span></td>
+            <td>[Investigator] INTEGRITY_VERIFIED: Evidence EV-7A102AE3 SHA256 matches acquisition digest.</td>
+        </tr>
+        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:05:00.675318+00:00</td>
+            <td><span class="badge badge-source">AUDIT_RECORD</span></td>
+            <td>[Investigator] INTEGRITY_VERIFIED: Evidence EV-FC432750 SHA256 matches acquisition digest.</td>
+        </tr>
+        
+        <tr>
+            <td style="white-space: nowrap; font-family: monospace;">2026-11-21T17:05:00.675318+00:00</td>
+            <td><span class="badge badge-source">AUDIT_RECORD</span></td>
+            <td>[Investigator] INTEGRITY_VERIFIED: Evidence EV-7A102AE3 SHA256 matches acquisition digest.</td>
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Investigator Notes</h2>
+            <div>
+                
+        <div class="note-card">
+            <div style="font-size: 0.85em; color: #94a3b8; margin-bottom: 6px;">
+                <strong>Raj</strong> on 2026-11-21T17:04:48.531203+00:00
+            </div>
+            <div style="white-space: pre-wrap;">Triage confirmed ELF header inside JPG file.</div>
+        </div>
+        
+            </div>
+        </section>
+
+        <div class="disclaimer-box">
+            <strong>CRITICAL FORENSIC LIMITATIONS & LEGAL NOTICE:</strong><br>
+            1. <strong>Separation of Fact vs. Interpretation:</strong> Cryptographic digests, raw byte signatures, and file dimensions represent observed empirical facts. Anomaly tags, severity classes, and log patterns represent investigative heuristics and do not constitute independent proof of malicious intent.<br>
+            2. <strong>Filesystem Timestamps:</strong> Timestamps extracted from filesystems (mtime/ctime/atime) are susceptible to timestomping and clock drift. They must be corroborated.<br>
+            3. <strong>Tamper Notice:</strong> SQLite audit logs are maintained for organizational traceability and chain of custody; they are not independently tamper-proof against deliberate host database modifications without external WORM or hardware-backed signing.
+        </div>
+
+        <footer>
+            LORDRON Forensics Toolkit • Created by Raj | Brand: LORDRON • Offline-First Architecture
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+# LORDRON FORENSICS — Core Dependencies
+# pyproject.toml is the single source of truth
+typer>=0.9.0,<0.12.0
+click>=8.0.0,<8.2.0
+rich>=13.0.0
+pillow>=10.0.0

@@ -1,0 +1,73 @@
+[build-system]
+requires = ["setuptools>=65.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lordron-forensics"
+version = "1.0.0"
+description = "Every File Has a Story. Find It. — Open Source Digital Investigation Toolkit"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+    { name = "Raj", email = "raj@lordron.local" }
+]
+keywords = [
+    "digital-forensics",
+    "dfir",
+    "incident-response",
+    "file-intelligence",
+    "metadata",
+    "timeline-analysis",
+    "evidence-management",
+    "cybersecurity"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities"
+]
+dependencies = [
+    "typer>=0.9.0,<0.12.0",
+    "click>=8.0.0,<8.2.0",
+    "rich>=13.0.0",
+    "pillow>=10.0.0"
+]
+
+[project.optional-dependencies]
+full = [
+    "pypdf>=3.17.0"
+]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0"
+]
+
+[project.scripts]
+lordron = "lordron.main:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["lordron*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = "-v --strict-markers"

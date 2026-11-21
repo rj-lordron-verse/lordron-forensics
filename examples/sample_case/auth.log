@@ -1,0 +1,6 @@
+Mar 29 08:12:00 gateway sshd[4012]: Failed password for invalid user admin from 203.0.113.195 port 51102 ssh2
+Mar 29 08:12:02 gateway sshd[4013]: Failed password for invalid user admin from 203.0.113.195 port 51104 ssh2
+Mar 29 08:12:04 gateway sshd[4014]: Failed password for invalid user test from 203.0.113.195 port 51106 ssh2
+Mar 29 08:15:30 gateway sshd[4020]: Accepted password for investigator from 10.0.0.15 port 42310 ssh2
+Mar 29 08:16:10 gateway sudo: investigator : TTY=pts/0 ; PWD=/home/investigator ; USER=root ; COMMAND=/usr/bin/cat /var/log/syslog
+Mar 29 08:20:00 gateway kernel: [ 4512.981] Segfault in test_worker at 0x7ffd98
