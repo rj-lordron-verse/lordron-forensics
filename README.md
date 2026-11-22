@@ -97,7 +97,7 @@ Termux on Android uses Android's Bionic libc rather than GNU glibc. To prevent p
 pkg update && pkg install -y python python-pillow exiftool ruff
 
 # 2. Clone and run the installer:
-git clone https://github.com/USERNAME/lordron-forensics.git
+git clone https://github.com/rj-lordron-verse/lordron-forensics.git
 cd lordron-forensics
 chmod +x install.sh
 ./install.sh
@@ -113,7 +113,7 @@ source .venv/bin/activate
 If you prefer standard manual virtual environment management:
 
 ```bash
-git clone https://github.com/USERNAME/lordron-forensics.git
+git clone https://github.com/rj-lordron-verse/lordron-forensics.git
 cd lordron-forensics
 
 # 1. Create virtual environment
