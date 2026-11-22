@@ -50,7 +50,7 @@ LORDRON FORENSICS supports four primary target environments:
 Clone the repository and run the automated bash installer:
 
 ```bash
-git clone https://github.com/USERNAME/lordron-forensics.git
+git clone https://github.com/rj-lordron-verse/lordron-forensics.git
 cd lordron-forensics
 chmod +x install.sh
 ./install.sh
@@ -64,7 +64,7 @@ source .venv/bin/activate
 Open PowerShell (Run as Administrator or standard user) and execute:
 
 ```powershell
-git clone https://github.com/USERNAME/lordron-forensics.git
+git clone https://github.com/rj-lordron-verse/lordron-forensics.git
 cd lordron-forensics
 
 # If PowerShell script execution is restricted for the current session:
